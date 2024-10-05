@@ -36,7 +36,7 @@
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/mohammad-abukhass/file-organizer.git
+   git clone [https://github.com/mohammad-abukhass/file-organizer.git](https://github.com/Moody03/file-organizer.git)
    cd file-organizer
    ```
 

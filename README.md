@@ -181,36 +181,3 @@ To keep the project secure:
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
-import socket
-import re
-
-def solve_equation(equation):
-    try:
-        return str(eval(equation))
-    except:
-        return ""
-
-def main():
-    host = '10.0.0.30'
-    port = 6544
-
-    with socket.create_connection((host, port)) as s:
-        s_file = s.makefile('rw', buffering=1)
-
-        while True:
-            line = s_file.readline()
-            if not line:
-                break
-
-            print(f"[SERVER] {line.strip()}")
-
-            # Match line like: "Solve 1 + 1 = ?"
-            match = re.search(r'Solve\s+([0-9+\-*/ ()]+)\s*=', line)
-            if match:
-                equation = match.group(1)
-                answer = solve_equation(equation)
-                print(f"[SOLVE] {equation} = {answer}")
-                s_file.write(f"{answer}\n")
-
-if __name__ == "__main__":
-    main()
